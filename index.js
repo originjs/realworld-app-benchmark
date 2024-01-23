@@ -3,11 +3,11 @@ import { execSync } from 'node:child_process';
 
 function buildProject(project) {
     console.log('Building project: ', project.name);
-    runCommand('pnpm i', project.name);
+    runCommand('pnpm i', project.path);
     if (project.build) {
-        runCommand(project.build, project.name);
+        runCommand(project.build, project.path);
     } else {
-        runCommand('pnpm build', project.name);
+        runCommand('pnpm build', project.path);
     }
 }
 

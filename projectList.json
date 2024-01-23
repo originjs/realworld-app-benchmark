@@ -1,25 +1,31 @@
 [
     {
-        "name":"vue3-realworld-app"
+        "name":"vue3",
+        "path":"app/vue3-realworld-app"
     },
     {
-        "name":"react-redux-realworld-example-app"
+        "name":"react",
+        "path":"app/react-redux-realworld-example-app"
     },
     {
-        "name":"angular-realworld-example-app"
+        "name":"angular",
+        "path":"app/angular-realworld-example-app"
     },
     {
-        "name":"realworld",
+        "name":"svelte",
+        "path":"app/realworld",
         "build":"pnpm build"
     },
     {
-        "name":"solid-realworld",
-        "build":"pnpm build"
+        "name":"solid",
+        "path":"app/solid-realworld"
     },
     {
-        "name":"preact-realworld-example-app"
+        "name":"preact",
+        "path":"app/preact-realworld-example-app"
     },
     {
-        "name":"realworld-qwik"
+        "name":"qwik",
+        "path":"app/realworld-qwik"
     }
 ]
