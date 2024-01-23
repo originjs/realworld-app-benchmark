@@ -5,7 +5,8 @@
     },
     {
         "name":"react",
-        "path":"app/react-redux-realworld-example-app"
+        "path":"app/react-redux-realworld-example-app",
+        "dist":"build"
     },
     {
         "name":"angular",

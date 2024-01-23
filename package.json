@@ -9,5 +9,10 @@
     "build": "node index.js"
   },
   "author": "@originjs",
-  "license": "MulanPSL-2.0"
+  "license": "MulanPSL-2.0",
+  "dependencies": {
+    "chrome-launcher": "^1.1.0",
+    "lighthouse": "^11.4.0",
+    "serve": "^14.2.1"
+  }
 }
