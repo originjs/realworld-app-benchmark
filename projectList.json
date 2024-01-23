@@ -1,0 +1,25 @@
+[
+    {
+        "name":"vue3-realworld-app"
+    },
+    {
+        "name":"react-redux-realworld-example-app"
+    },
+    {
+        "name":"angular-realworld-example-app"
+    },
+    {
+        "name":"realworld",
+        "build":"pnpm build"
+    },
+    {
+        "name":"solid-realworld",
+        "build":"pnpm build"
+    },
+    {
+        "name":"preact-realworld-example-app"
+    },
+    {
+        "name":"realworld-qwik"
+    }
+]

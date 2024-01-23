@@ -1,0 +1,21 @@
+[submodule "vue3-realworld-app"]
+	path = vue3-realworld-app
+	url = git@github.com:niyaco/vue3-realworld-app.git
+[submodule "solid-realworld"]
+	path = solid-realworld
+	url = git@github.com:solidjs/solid-realworld.git
+[submodule "realworld"]
+	path = realworld
+	url = git@github.com:sveltejs/realworld.git
+[submodule "angular-realworld-example-app"]
+	path = angular-realworld-example-app
+	url = git@github.com:khaledosman/angular-realworld-example-app.git
+[submodule "preact-realworld-example-app"]
+	path = preact-realworld-example-app
+	url = git@github.com:mutoe/preact-realworld-example-app.git
+[submodule "realworld-qwik"]
+	path = realworld-qwik
+	url = git@github.com:joma1021/realworld-qwik.git
+[submodule "react-redux-realworld-example-app"]
+	path = react-redux-realworld-example-app
+	url = git@github.com:khaledosman/react-redux-realworld-example-app.git

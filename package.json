@@ -1,0 +1,13 @@
+{
+  "name": "realworld-app-benchmark",
+  "version": "1.0.0",
+  "description": "Lighthouse benchmark for javascript realworld app",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "build": "node index.js"
+  },
+  "author": "@originjs",
+  "license": "MulanPSL-2.0"
+}
