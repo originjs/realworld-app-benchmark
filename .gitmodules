@@ -1,21 +1,21 @@
 [submodule "vue3-realworld-app"]
 	path = app/vue3-realworld-app
-	url = git@github.com:niyaco/vue3-realworld-app.git
+	url = https://github.com/niyaco/vue3-realworld-app.git
 [submodule "solid-realworld"]
 	path = app/solid-realworld
-	url = git@github.com:solidjs/solid-realworld.git
+	url = https://github.com/solidjs/solid-realworld.git
 [submodule "realworld"]
 	path = app/realworld
-	url = git@github.com:sveltejs/realworld.git
+	url = https://github.com/sveltejs/realworld.git
 [submodule "angular-realworld-example-app"]
 	path = app/angular-realworld-example-app
-	url = git@github.com:khaledosman/angular-realworld-example-app.git
+	url = https://github.com/khaledosman/angular-realworld-example-app.git
 [submodule "preact-realworld-example-app"]
 	path = app/preact-realworld-example-app
-	url = git@github.com:mutoe/preact-realworld-example-app.git
+	url = https://github.com/mutoe/preact-realworld-example-app.git
 [submodule "realworld-qwik"]
 	path = app/realworld-qwik
-	url = git@github.com:joma1021/realworld-qwik.git
+	url = https://github.com/joma1021/realworld-qwik.git
 [submodule "react-redux-realworld-example-app"]
 	path = app/react-redux-realworld-example-app
-	url = git@github.com:khaledosman/react-redux-realworld-example-app.git
+	url = https://github.com/khaledosman/react-redux-realworld-example-app.git
