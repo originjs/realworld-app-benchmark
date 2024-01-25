@@ -19,3 +19,30 @@
 [submodule "react-redux-realworld-example-app"]
 	path = app/react-redux-realworld-example-app
 	url = https://github.com/khaledosman/react-redux-realworld-example-app.git
+[submodule "app/apprun-realworld-example-app"]
+	path = app/apprun-realworld-example-app
+	url = https://github.com/gothinkster/apprun-realworld-example-app.git
+[submodule "app/elm-spa-example"]
+	path = app/elm-spa-example
+	url = https://github.com/rtfeldman/elm-spa-example.git
+[submodule "app/ember-realworld"]
+	path = app/ember-realworld
+	url = https://github.com/gothinkster/ember-realworld.git
+[submodule "app/hyperapp-realworld-example-app"]
+	path = app/hyperapp-realworld-example-app
+	url = https://github.com/kwasniew/hyperapp-realworld-example-app.git
+[submodule "app/imba-realworld-example-app"]
+	path = app/imba-realworld-example-app
+	url = https://github.com/cartonalexandre/imba-realworld-example-app.git
+[submodule "app/riot_realworld_example_app"]
+	path = app/riot_realworld_example_app
+	url = https://github.com/iq3addLi/riot_realworld_example_app.git
+[submodule "app/san-realworld-app"]
+	path = app/san-realworld-app
+	url = https://github.com/ecomfe/san-realworld-app.git
+[submodule "app/stencil-realworld-app"]
+	path = app/stencil-realworld-app
+	url = https://github.com/khaledosman/stencil-realworld-app.git
+[submodule "app/rust-yew-realworld-example-app"]
+	path = app/rust-yew-realworld-example-app
+	url = https://github.com/jetli/rust-yew-realworld-example-app.git
