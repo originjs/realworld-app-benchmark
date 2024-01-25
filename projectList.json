@@ -15,11 +15,12 @@
     {
         "name":"svelte",
         "path":"app/realworld",
-        "build":"pnpm build"
+        "preview":"\"node_modules/.bin/vite\" preview"
     },
     {
         "name":"solid",
-        "path":"app/solid-realworld"
+        "path":"app/solid-realworld",
+        "dist":"public"
     },
     {
         "name":"preact",
@@ -27,6 +28,8 @@
     },
     {
         "name":"qwik",
-        "path":"app/realworld-qwik"
+        "path":"app/realworld-qwik",
+        "build":"\"node_modules/.bin/vite\" build",
+        "preview":"\"node_modules/.bin/vite\" preview"
     }
 ]
