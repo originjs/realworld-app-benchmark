@@ -7,6 +7,7 @@ const { errorHandler } = require("./middlewares/errorHandler");
 const http = require("http");
 const https = require("https");
 const fs = require("fs");
+const compression = require('compression');
 
 // Import Models
 const User = require("./models/User");
@@ -18,6 +19,7 @@ dotenv.config({ path: "config.env" });
 
 const app = express();
 
+app.use(compression());
 // Body parser
 app.use(express.json());
 
