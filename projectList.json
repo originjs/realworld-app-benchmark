@@ -10,7 +10,8 @@
     },
     {
         "name":"angular",
-        "path":"app/angular-realworld-example-app"
+        "path":"app/angular-realworld-example-app",
+        "build":"\"node_modules/.bin/ng\" build --configuration production  --base-href ./"
     },
     {
         "name":"svelte",
@@ -31,5 +32,47 @@
         "path":"app/realworld-qwik",
         "build":"\"node_modules/.bin/vite\" build",
         "preview":"\"node_modules/.bin/vite\" preview"
+    },
+    {
+        "name":"ember",
+        "path":"app/ember-realworld",
+        "build":"set NODE_OPTIONS=--openssl-legacy-provider && \"node_modules/.bin/ember\" build --environment=production"
+    },
+    {
+        "name":"apprun",
+        "path":"app/apprun-realworld-example-app",
+        "preview":"\"node_modules/.bin/webpack\" serve --mode production"
+    },
+    {
+        "name":"hyperapp",
+        "path":"app/hyperapp-realworld-example-app",
+        "build":"\"node_modules/.bin/parcel\" build index.html"
+    },
+    {
+        "name":"imba",
+        "path":"app/imba-realworld-example-app"
+    },
+    {
+        "name":"riot",
+        "path":"app/riot_realworld_example_app",
+        "dist":"docs"
+    },
+    {
+        "name":"san",
+        "path":"app/san-realworld-app",
+        "build":"(if exist dist rmdir dist /Q /S) && set NODE_OPTIONS=--openssl-legacy-provider && \"node_modules/.bin/webpack\" --config=webpack.config.js --mode=production"
+    },
+    {
+        "name":"stencil",
+        "path":"app/stencil-realworld-app",
+        "dist":"www",
+        "build":"(if exist www rmdir www /S /Q) && \"node_modules/.bin/stencil\" build --prerender"
+    },
+    {
+        "name":"yew",
+        "path":"app/rust-yew-realworld-example-app",
+        "install":"cargo install wasm-pack && cargo install --locked trunk",
+        "build":"cd crates/conduit-wasm && trunk build",
+        "dist":"crates/conduit-wasm/dist"
     }
 ]
