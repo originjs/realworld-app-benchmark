@@ -6,7 +6,11 @@ import lighthouse from "lighthouse";
 
 function buildProject(project) {
     console.log('Building project: ', project.name);
-    runCommand('pnpm i', project.path);
+    if (project.install) {
+        runCommand(project.install, project.path);
+    } else {
+        runCommand('pnpm i', project.path);
+    }
     if (project.build) {
         runCommand(project.build, project.path);
     } else {
