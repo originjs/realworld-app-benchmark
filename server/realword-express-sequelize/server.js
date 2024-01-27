@@ -4,6 +4,9 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const colors = require("colors");
 const { errorHandler } = require("./middlewares/errorHandler");
+const http = require("http");
+const https = require("https");
+const fs = require("fs");
 
 // Import Models
 const User = require("./models/User");
@@ -44,15 +47,18 @@ const comments = require("./routes/comments");
 const tags = require("./routes/tags");
 
 // Mount routers
-app.use(users);
-app.use(profiles);
-app.use(articles);
-app.use(comments);
-app.use(tags);
+app.use('/api', users);
+app.use('/api', profiles);
+app.use('/api', articles);
+app.use('/api', comments);
+app.use('/api', tags);
+app.use(express.static('static'))
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
+const SSLPORT = 443;
 
 app.use(errorHandler);
+app.set('port', PORT);
 
 // Relations
 User.belongsToMany(User, {
@@ -111,11 +117,19 @@ Tag.belongsToMany(Article, {
 });
 
 const sync = async () => await sequelize.sync({ force: false });
-sync().then(() => {});
+sync().then(() => { });
 
-const server = app.listen(
+http.createServer(app).listen(
   PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
-  )
+  '0.0.0.0',
+  console.log(`HTTP Server running on port ${PORT}`.yellow.bold)
+);
+
+https.createServer({
+  key: fs.readFileSync("localhost.key"),
+  cert: fs.readFileSync("localhost.crt")
+}, app).listen(
+  SSLPORT,
+  '0.0.0.0',
+  console.log(`HTTPS Server running on port ${SSLPORT}`.yellow.bold)
 );
