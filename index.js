@@ -4,13 +4,17 @@ import * as chromeLauncher from "chrome-launcher";
 import * as path from "path";
 import lighthouse from "lighthouse";
 
-function buildProject(project) {
-    console.log('Building project: ', project.name);
+function install(project) {
+    console.log('Installing: ', project.name);
     if (project.install) {
         runCommand(project.install, project.path);
     } else {
         runCommand('pnpm i', project.path);
     }
+}
+
+function build(project) {
+    console.log('Building project: ', project.name);
     if (project.build) {
         runCommand(project.build, project.path);
     } else {
@@ -18,28 +22,27 @@ function buildProject(project) {
     }
 }
 
-function runCommand(command, cwd) {
-    console.log(command);
-    execSync(command, { stdio: 'inherit', cwd });
-}
-
-function deployHtml(project, port) {
+function preview(project, port) {
     let serve;
-    buildProject(project);
     if (project.preview) {
         const cmd = project.preview;
         console.log(cmd);
-        serve = exec(`${cmd} --port ${port}`,{cwd:project.path} , (error) => {
+        serve = exec(`${cmd} --port ${port}`, { cwd: project.path }, (error) => {
             throw error;
         });
     } else {
         const cmd = `"node_modules/.bin/serve" ./${project.path}/${project.dist ? project.dist : 'dist'} -l ${port}`;
         console.log(cmd);
-        serve = exec(cmd , (error) => {
+        serve = exec(cmd, (error) => {
             throw error;
         });
     }
     return serve;
+}
+
+function runCommand(command, cwd) {
+    console.log(command);
+    execSync(command, { stdio: 'inherit', cwd });
 }
 
 async function runLighthouse(url) {
@@ -79,23 +82,43 @@ async function runLighthouse(url) {
 }
 
 async function main() {
-    process.stdout.setEncoding('utf-8');
-    const projects = JSON.parse(fs.readFileSync('projectList.json'));
-    let port = 5000;
-    for (const project of projects) {
-        if (project.name) {
-            let serve = deployHtml(project, port);            
-            const result = await runLighthouse(`http://localhost:${port}/`);
-            if (!fs.existsSync(`./results/${project.name}.json`)) {
-                fs.mkdirSync(path.dirname(`./results/${project.name}.json`), {recursive: true})
+    process.stdout.setEncoding("utf-8");
+    const args = process.argv.length <= 2 ? [] : process.argv.slice(2, process.argv.length);
+    const projects = JSON.parse(fs.readFileSync("projectList.json"));
+    // install
+    if (args.length == 0 || args.includes("--install")) {
+        for (const project of projects) {
+            if (project.name) {
+                install(project);
             }
-            fs.writeFileSync(`./results/${project.name}.json`, JSON.stringify(result));
-            if (serve) {
-                serve.kill('SIGINT');
-            }
-            port++;
         }
     }
+    // build
+    if (args.length == 0 || args.includes("--build")) {
+        for (const project of projects) {
+            if (project.name) {
+                build(project);
+            }
+        }
+    }
+    // lighthouse benchmark
+    if (args.length == 0 || args.includes("--bench")) {
+        let port = 5000;
+        fs.mkdirSync('./results');
+        for (const project of projects) {
+            if (project.name) {
+                let serve = preview(project, port);
+                const result = await runLighthouse(`http://localhost:${port}/`);
+                fs.writeFileSync(`./results/${project.name}.json`, JSON.stringify(result));
+                if (serve) {
+                    serve.kill('SIGINT');
+                }
+                port++;
+            }
+        }
+    }
+    // generate result
+
 }
 
 main();

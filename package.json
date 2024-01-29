@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build": "node index.js"
+    "bench": "node index.js"
   },
   "author": "@originjs",
   "license": "MulanPSL-2.0",

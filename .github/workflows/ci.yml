@@ -4,9 +4,9 @@ on:
   # push:
   #   branches:
   #     - '**'
-  # pull_request:
-  #   branches:
-  #     - main
+  pull_request:
+    branches:
+      - release
 
 # Declare default permissions as read only.
 permissions: read-all
