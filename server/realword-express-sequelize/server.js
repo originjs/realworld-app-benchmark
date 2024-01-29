@@ -54,7 +54,15 @@ app.use('/api', profiles);
 app.use('/api', articles);
 app.use('/api', comments);
 app.use('/api', tags);
-app.use(express.static('static'))
+app.use(express.static('static'));
+
+// css font
+app.get('/css', function (req, res) {
+  res.send(`@font-face {
+    font-family: 'system-ui';
+    font-style: normal;
+    font-weight: 400;}`);
+});
 
 const PORT = process.env.PORT || 80;
 const SSLPORT = 443;
