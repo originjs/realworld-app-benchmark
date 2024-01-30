@@ -1,8 +1,8 @@
 import * as fs from 'node:fs';
 import { execSync, exec } from 'node:child_process';
 import * as chromeLauncher from "chrome-launcher";
-import * as path from "path";
 import lighthouse from "lighthouse";
+import { sortResult } from './resultSort.js';
 
 function install(project) {
     console.log('Installing: ', project.name);
@@ -104,9 +104,12 @@ async function main() {
     // lighthouse benchmark
     if (args.length == 0 || args.includes("--bench")) {
         let port = 5000;
-        fs.mkdirSync('./results');
+        if (!fs.existsSync('./results')) {
+            fs.mkdirSync('./results');
+        }
         for (const project of projects) {
             if (project.name) {
+                console.log(`Start testing ${project.name}...`)
                 let serve = preview(project, port);
                 const result = await runLighthouse(`http://localhost:${port}/`);
                 fs.writeFileSync(`./results/${project.name}.json`, JSON.stringify(result));
@@ -116,6 +119,7 @@ async function main() {
                 port++;
             }
         }
+        sortResult('./results');
     }
     // generate result
 
