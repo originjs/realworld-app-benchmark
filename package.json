@@ -13,6 +13,7 @@
   "dependencies": {
     "chrome-launcher": "^1.1.0",
     "lighthouse": "^11.4.0",
-    "serve": "^14.2.1"
+    "serve": "^14.2.1",
+    "xlsx": "^0.18.5"
   }
 }
