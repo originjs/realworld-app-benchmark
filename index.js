@@ -2,7 +2,7 @@ import * as fs from 'node:fs';
 import { execSync, exec } from 'node:child_process';
 import * as chromeLauncher from "chrome-launcher";
 import lighthouse from "lighthouse";
-import { sortResult } from './resultSort.js';
+import { report } from './report.js';
 
 function install(project) {
     console.log('Installing: ', project.name);
@@ -86,7 +86,7 @@ async function main() {
     const args = process.argv.length <= 2 ? [] : process.argv.slice(2, process.argv.length);
     const projects = JSON.parse(fs.readFileSync("projectList.json"));
     // install
-    if (args.length == 0 || args.includes("--install")) {
+    if (args.length == 0 || args.includes("--all") || args.includes("--install")) {
         for (const project of projects) {
             if (project.name) {
                 install(project);
@@ -94,7 +94,7 @@ async function main() {
         }
     }
     // build
-    if (args.length == 0 || args.includes("--build")) {
+    if (args.length == 0 || args.includes("--all") || args.includes("--build")) {
         for (const project of projects) {
             if (project.name) {
                 build(project);
@@ -102,7 +102,7 @@ async function main() {
         }
     }
     // lighthouse benchmark
-    if (args.length == 0 || args.includes("--bench")) {
+    if (args.length == 0 || args.includes("--all") || args.includes("--bench")) {
         let port = 5000;
         if (!fs.existsSync('./results')) {
             fs.mkdirSync('./results');
@@ -112,14 +112,20 @@ async function main() {
                 console.log(`Start testing ${project.name}...`)
                 let serve = preview(project, port);
                 const result = await runLighthouse(`http://localhost:${port}/`);
-                fs.writeFileSync(`./results/${project.name}.json`, JSON.stringify(result));
+                if (args.includes("--upload")) {
+                    report(project.name, result);
+                } else {
+                    fs.writeFileSync(`./results/${project.name}.json`, JSON.stringify(result));
+                }
                 if (serve) {
                     serve.kill('SIGINT');
                 }
                 port++;
             }
         }
-        sortResult('./results');
+        if (!args.includes("--upload")) {
+            sortResult('./results');
+        }
     }
     // generate result
 
