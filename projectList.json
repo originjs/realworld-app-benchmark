@@ -4,6 +4,10 @@
         "path":"app/vue3-realworld-app"
     },
     {
+        "name":"vue-vapor",
+        "path":"app/vue3-vapor-realworld-app"
+    },
+    {
         "name":"react",
         "path":"app/react-redux-realworld-example-app",
         "dist":"build"
