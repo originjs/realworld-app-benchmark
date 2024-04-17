@@ -1,6 +1,6 @@
 [
     {
-        "name":"vue3",
+        "name":"vue",
         "path":"app/vue3-realworld-app"
     },
     {
@@ -38,7 +38,7 @@
         "preview":"\"node_modules/.bin/vite\" preview"
     },
     {
-        "name":"ember",
+        "name":"ember.js",
         "path":"app/ember-realworld",
         "build":"set NODE_OPTIONS=--openssl-legacy-provider && \"node_modules/.bin/ember\" build --environment=production"
     },
@@ -78,5 +78,10 @@
         "install":"cargo install wasm-pack && cargo install --locked trunk",
         "build":"cd crates/conduit-wasm && trunk build",
         "dist":"crates/conduit-wasm/dist"
+    },
+    {
+        "name":"million",
+        "path":"app/million-realworld-example-app",
+        "dist":"build"
     }
 ]
